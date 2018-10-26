@@ -3,7 +3,7 @@ describe("Ejemplo test", function() {
     expect(true).toBe(true);
   });
   it("matcher no verdadero", function() {
-    expect(false).not.toBe(true);
+    expect(true).not.toBe(true);
   });
   it("otro matcher", function() {
     expect(false).not.toBe(true);
