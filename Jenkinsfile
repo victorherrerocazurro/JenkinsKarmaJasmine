@@ -7,5 +7,10 @@ pipeline {
         bat 'node node_modules/karma/bin/karma start'
       }
     }
+    stage('Verificacion') {
+      steps {
+        junit 'TESTS*.xml'
+      }
+    }
   }
 }
