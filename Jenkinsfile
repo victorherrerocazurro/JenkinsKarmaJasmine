@@ -4,13 +4,17 @@ pipeline {
     stage('Test') {
       steps {
         bat 'npm update'
-        bat 'node node_modules/karma/bin/karma start'
+        try {
+          bat 'node node_modules/karma/bin/karma start'
+        }finally{
+          junit 'TESTS*.xml'
+        }        
       }
     }
-    stage('Verificacion') {
+    /*stage('Verificacion') {
       steps {
         junit 'TESTS*.xml'
       }
-    }
+    }*/
   }
 }
