@@ -4,17 +4,20 @@ pipeline {
     stage('Test') {
       steps {
         bat 'npm update'
-        try {
-          bat 'node node_modules/karma/bin/karma start'
-        }finally{
-          junit 'TESTS*.xml'
-        }        
+        step ('Ejecutando los Test') {
+          try {
+            bat 'node node_modules/karma/bin/karma start'
+          }catch(err) {
+            echo 'Los test han fallado'
+          }        
+        }
       }
     }
-    /*stage('Verificacion') {
+    stage('Verificacion') {
       steps {
+        echo 'Se interpretan los resultados de los test'
         junit 'TESTS*.xml'
       }
-    }*/
+    }
   }
 }
